@@ -50,7 +50,7 @@ val databaseModule = module {
 
         driverClassName = System.getenv("JDBC_DRIVER")
         maximumPoolSize = 3
-        jdbcUrl = dbUri.toString()
+        jdbcUrl =
             "jdbc:postgresql://" + dbUri.host + ":" + dbUri.port + dbUri.path + "?sslmode=require" + "&user=$username&password=$password"
         isAutoCommit = false
         transactionIsolation = "TRANSACTION_REPEATABLE_READ"
