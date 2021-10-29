@@ -45,13 +45,13 @@ val databaseModule = module {
 
     fun provideHikariConfig() = HikariConfig().apply {
         val dbUri = URI(System.getenv("DATABASE_URL"))
-//        val username = dbUri.userInfo.split(":").toTypedArray()[0]
-//        val password = dbUri.userInfo.split(":").toTypedArray()[1]
+        val username = dbUri.userInfo.split(":").toTypedArray()[0]
+        val password = dbUri.userInfo.split(":").toTypedArray()[1]
 
         driverClassName = System.getenv("JDBC_DRIVER")
         maximumPoolSize = 3
         jdbcUrl = dbUri.toString()
-//            "jdbc:postgresql://" + dbUri.host + ":" + dbUri.port + dbUri.path + "?sslmode=require" + "&user=$username&password=$password"
+            "jdbc:postgresql://" + dbUri.host + ":" + dbUri.port + dbUri.path + "?sslmode=require" + "&user=$username&password=$password"
         isAutoCommit = false
         transactionIsolation = "TRANSACTION_REPEATABLE_READ"
         validate()
